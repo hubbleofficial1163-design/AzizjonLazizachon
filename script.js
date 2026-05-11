@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Инициализация формы RSVP
     initRSVPForm();
+    
+    // Инициализация календаря
+    initCalendar();
+    
+    // Обработчики кнопок календаря
+    const prevBtn = document.getElementById('prevMonthBtn');
+    const nextBtn = document.getElementById('nextMonthBtn');
+    if (prevBtn) prevBtn.addEventListener('click', () => changeMonth(-1));
+    if (nextBtn) nextBtn.addEventListener('click', () => changeMonth(1));
 });
 
 // Таймер отсчета до свадьбы
@@ -347,3 +356,98 @@ if (guestMinus && guestPlus && guestCountSpan) {
     
     updateGuestButtons();
 }
+
+// Функция генерации календаря
+// Функция генерации календаря
+function generateWeddingCalendar(year, month, weddingDay = 1, weddingYear = 2026, weddingMonth = 7) {
+    const firstDayOfMonth = new Date(year, month, 1);
+    const startDayOfWeek = firstDayOfMonth.getDay(); // 0 = воскресенье
+    // Конвертируем в понедельник как первый день (0 = понедельник)
+    let startOffset = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1;
+    
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const daysInPrevMonth = new Date(year, month, 0).getDate();
+    
+    const calendarGrid = document.getElementById('weddingCalendar');
+    if (!calendarGrid) return;
+    
+    calendarGrid.innerHTML = '';
+    
+    // Дни недели
+    const weekdays = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
+    weekdays.forEach(day => {
+        const weekdayDiv = document.createElement('div');
+        weekdayDiv.className = 'calendar-weekday';
+        weekdayDiv.textContent = day;
+        calendarGrid.appendChild(weekdayDiv);
+    });
+    
+    // Заполняем дни предыдущего месяца
+    for (let i = startOffset - 1; i >= 0; i--) {
+        const dayNum = daysInPrevMonth - i;
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'calendar-day-cell other-month';
+        dayDiv.textContent = dayNum;
+        calendarGrid.appendChild(dayDiv);
+    }
+    
+    // Заполняем дни текущего месяца
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'calendar-day-cell';
+        dayDiv.textContent = day;
+        
+        // Проверяем, является ли этот день датой свадьбы (только в нужном году и месяце)
+        const isWeddingDay = (year === weddingYear && month === weddingMonth && day === weddingDay);
+        if (isWeddingDay) {
+            dayDiv.classList.add('wedding-day');
+        }
+        
+        calendarGrid.appendChild(dayDiv);
+    }
+    
+    // Заполняем дни следующего месяца
+    const totalCells = 42; // 6 строк по 7 дней
+    const currentCells = startOffset + daysInMonth;
+    const remainingCells = totalCells - currentCells;
+    
+    for (let day = 1; day <= remainingCells; day++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'calendar-day-cell other-month';
+        dayDiv.textContent = day;
+        calendarGrid.appendChild(dayDiv);
+    }
+}
+
+// Инициализация календаря
+let currentYear = 2026;
+let currentMonth = 7; // 7 = август (0-индексация)
+const WEDDING_DAY = 1;
+
+function initCalendar() {
+    generateWeddingCalendar(currentYear, currentMonth, WEDDING_DAY);
+    
+    const monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 
+                        'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+    const monthYearEl = document.getElementById('calendarMonthYear');
+    if (monthYearEl) {
+        monthYearEl.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+    }
+}
+
+function changeMonth(delta) {
+    currentMonth += delta;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    } else if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    initCalendar();
+}
+
+// Добавьте в DOMContentLoaded:
+// initCalendar();
+// document.getElementById('prevMonthBtn')?.addEventListener('click', () => changeMonth(-1));
+// document.getElementById('nextMonthBtn')?.addEventListener('click', () => changeMonth(1));
