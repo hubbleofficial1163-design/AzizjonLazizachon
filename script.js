@@ -1,4 +1,4 @@
-// Скрипт для свадебного сайта Илья & Полина
+// Скрипт для свадебного сайта Азизжон & Лазизахон
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Свадебный сайт загружен');
     
@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.getElementById('nextMonthBtn');
     if (prevBtn) prevBtn.addEventListener('click', () => changeMonth(-1));
     if (nextBtn) nextBtn.addEventListener('click', () => changeMonth(1));
+    
+    // Счетчик гостей
+    initGuestCounter();
 });
 
 // Таймер отсчета до свадьбы
@@ -40,6 +43,48 @@ function updateCountdown() {
         if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
         if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
         if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+    }
+}
+
+// ========== СЧЕТЧИК ГОСТЕЙ ==========
+function initGuestCounter() {
+    const guestMinus = document.querySelector('#guestMinus');
+    const guestPlus = document.querySelector('#guestPlus');
+    const guestCountSpan = document.querySelector('#guestCount');
+    let guestValue = 1;
+    
+    if (guestMinus && guestPlus && guestCountSpan) {
+        const updateGuestButtons = () => {
+            if (guestValue <= 1) {
+                guestMinus.disabled = true;
+            } else {
+                guestMinus.disabled = false;
+            }
+            
+            if (guestValue >= 9) {
+                guestPlus.disabled = true;
+            } else {
+                guestPlus.disabled = false;
+            }
+        };
+        
+        guestMinus.addEventListener('click', () => {
+            if (guestValue > 1) {
+                guestValue--;
+                guestCountSpan.textContent = guestValue;
+                updateGuestButtons();
+            }
+        });
+        
+        guestPlus.addEventListener('click', () => {
+            if (guestValue < 9) {
+                guestValue++;
+                guestCountSpan.textContent = guestValue;
+                updateGuestButtons();
+            }
+        });
+        
+        updateGuestButtons();
     }
 }
 
@@ -197,7 +242,7 @@ function showLoadingModal() {
                 width: 50px;
                 height: 50px;
                 border: 3px solid #e0e0e0;
-                border-top-color: #5c151b;
+                border-top-color: #9c7a5c;
                 border-radius: 50%;
                 margin: 0 auto 20px;
                 animation: spin 1s linear infinite;
@@ -214,7 +259,7 @@ function showLoadingModal() {
 }
 
 // ========== GOOGLE SHEETS ==========
-const SCRIPT_URL = 'https://script.google.macros/s/AKfS_e54Osn/exec'; // ЗАМЕНИТЕ НА ВАШ URL
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx51vxflcLXQ6P8QxQO5DZgqQ9Y2G_rtXZOxfOuFiaqHR_7_sLfMBXpky6FU7ca4meP/exec'; // ЗАМЕНИТЕ НА ВАШ URL
 
 // Инициализация формы RSVP
 function initRSVPForm() {
@@ -229,18 +274,12 @@ function initRSVPForm() {
         
         // Получаем данные
         const nameInput = this.querySelector('input[type="text"]');
-        const allergyInput = this.querySelector('#allergy');
         const attendanceRadio = this.querySelector('input[name="attendance"]:checked');
+        const guestCountSpan = document.getElementById('guestCount');
         
         const name = nameInput ? nameInput.value.trim() : '';
-        const allergy = allergyInput ? allergyInput.value.trim() : '';
         const attendance = attendanceRadio ? attendanceRadio.value : null;
-        
-        // Собираем выбранные алкогольные предпочтения
-        let alcoholValues = [];
-        document.querySelectorAll('input[name="alcohol"]:checked').forEach(checkbox => {
-            alcoholValues.push(checkbox.value);
-        });
+        const guests = guestCountSpan ? guestCountSpan.textContent : '1';
         
         // Валидация
         if (!name) {
@@ -264,12 +303,8 @@ function initRSVPForm() {
             // Формируем данные для отправки
             const formDataToSend = new URLSearchParams();
             formDataToSend.append('name', name);
-            formDataToSend.append('allergy', allergy);
             formDataToSend.append('attendance', attendance);
-            
-            for (const alcohol of alcoholValues) {
-                formDataToSend.append('alcohol', alcohol);
-            }
+            formDataToSend.append('guests', guests);
             
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
@@ -285,7 +320,7 @@ function initRSVPForm() {
                 if (attendance === 'yes') {
                     showModal(
                         'Спасибо, ' + name + '!',
-                        'Мы будем ждать вас на нашей свадьбе 21 августа 2026 года!',
+                        'Мы будем ждать вас на нашей свадьбе 1 августа 2026 года! 🎉',
                         false
                     );
                 } else {
@@ -297,8 +332,15 @@ function initRSVPForm() {
                 }
                 // Очищаем форму
                 rsvpForm.reset();
-                // Сбрасываем чекбоксы
-                document.querySelectorAll('input[name="alcohol"]').forEach(cb => cb.checked = false);
+                // Сбрасываем счетчик гостей
+                if (guestCountSpan) {
+                    guestCountSpan.textContent = '1';
+                }
+                // Сбрасываем активность счетчика
+                const guestMinus = document.getElementById('guestMinus');
+                const guestPlus = document.getElementById('guestPlus');
+                if (guestMinus) guestMinus.disabled = true;
+                if (guestPlus) guestPlus.disabled = false;
             } else {
                 throw new Error(result.message || 'Ошибка отправки');
             }
@@ -316,53 +358,16 @@ function initRSVPForm() {
     });
 }
 
+// ========== КАЛЕНДАРЬ ==========
+let currentYear = 2026;
+let currentMonth = 7; // 7 = август (0-индексация)
+const WEDDING_DAY = 1;
+const WEDDING_YEAR = 2026;
+const WEDDING_MONTH = 7;
 
-// Логика для кнопок + и - количества гостей
-const guestMinus = document.querySelector('#guestMinus');
-const guestPlus = document.querySelector('#guestPlus');
-const guestCountSpan = document.querySelector('#guestCount');
-let guestValue = 1;
-
-if (guestMinus && guestPlus && guestCountSpan) {
-    const updateGuestButtons = () => {
-        if (guestValue <= 1) {
-            guestMinus.disabled = true;
-        } else {
-            guestMinus.disabled = false;
-        }
-        
-        if (guestValue >= 9) {
-            guestPlus.disabled = true;
-        } else {
-            guestPlus.disabled = false;
-        }
-    };
-    
-    guestMinus.addEventListener('click', () => {
-        if (guestValue > 1) {
-            guestValue--;
-            guestCountSpan.textContent = guestValue;
-            updateGuestButtons();
-        }
-    });
-    
-    guestPlus.addEventListener('click', () => {
-        if (guestValue < 9) {
-            guestValue++;
-            guestCountSpan.textContent = guestValue;
-            updateGuestButtons();
-        }
-    });
-    
-    updateGuestButtons();
-}
-
-// Функция генерации календаря
-// Функция генерации календаря
 function generateWeddingCalendar(year, month, weddingDay = 1, weddingYear = 2026, weddingMonth = 7) {
     const firstDayOfMonth = new Date(year, month, 1);
     const startDayOfWeek = firstDayOfMonth.getDay(); // 0 = воскресенье
-    // Конвертируем в понедельник как первый день (0 = понедельник)
     let startOffset = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1;
     
     const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -397,7 +402,6 @@ function generateWeddingCalendar(year, month, weddingDay = 1, weddingYear = 2026
         dayDiv.className = 'calendar-day-cell';
         dayDiv.textContent = day;
         
-        // Проверяем, является ли этот день датой свадьбы (только в нужном году и месяце)
         const isWeddingDay = (year === weddingYear && month === weddingMonth && day === weddingDay);
         if (isWeddingDay) {
             dayDiv.classList.add('wedding-day');
@@ -407,7 +411,7 @@ function generateWeddingCalendar(year, month, weddingDay = 1, weddingYear = 2026
     }
     
     // Заполняем дни следующего месяца
-    const totalCells = 42; // 6 строк по 7 дней
+    const totalCells = 42;
     const currentCells = startOffset + daysInMonth;
     const remainingCells = totalCells - currentCells;
     
@@ -419,13 +423,8 @@ function generateWeddingCalendar(year, month, weddingDay = 1, weddingYear = 2026
     }
 }
 
-// Инициализация календаря
-let currentYear = 2026;
-let currentMonth = 7; // 7 = август (0-индексация)
-const WEDDING_DAY = 1;
-
 function initCalendar() {
-    generateWeddingCalendar(currentYear, currentMonth, WEDDING_DAY);
+    generateWeddingCalendar(currentYear, currentMonth, WEDDING_DAY, WEDDING_YEAR, WEDDING_MONTH);
     
     const monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 
                         'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
@@ -446,8 +445,3 @@ function changeMonth(delta) {
     }
     initCalendar();
 }
-
-// Добавьте в DOMContentLoaded:
-// initCalendar();
-// document.getElementById('prevMonthBtn')?.addEventListener('click', () => changeMonth(-1));
-// document.getElementById('nextMonthBtn')?.addEventListener('click', () => changeMonth(1));
