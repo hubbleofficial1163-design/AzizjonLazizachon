@@ -68,37 +68,17 @@
                 <!-- Вместо <img src="4.png" alt="Дата свадьбы 21 августа 2026" class="date-photo"> вставляем этот код -->
 
 <!-- Простой календарь с выделенной датой свадьбы (ПРОЗРАЧНЫЙ ФОН) -->
-<div class="simple-calendar">
-    <!-- Дни недели -->
-    <div class="calendar-row days-of-week">
-        <div class="calendar-day">ПН</div>
-        <div class="calendar-day">ВТ</div>
-        <div class="calendar-day">СР</div>
-        <div class="calendar-day">ЧТ</div>
-        <div class="calendar-day">ПТ</div>
-        <div class="calendar-day">СБ</div>
-        <div class="calendar-day">ВС</div>
+<!-- Контейнер для календаря -->
+<div class="wedding-calendar-container">
+    <div class="calendar-header">
+        <button class="calendar-nav" id="prevMonthBtn">‹</button>
+        <h3 class="calendar-month-year" id="calendarMonthYear">Август 2026</h3>
+        <button class="calendar-nav" id="nextMonthBtn">›</button>
     </div>
-    <!-- Неделя свадьбы (17.08 - 23.08) -->
-    <div class="calendar-row">
-        <div class="calendar-date">27</div>
-        <div class="calendar-date">28</div>
-        <div class="calendar-date">29</div>
-        <div class="calendar-date">30</div>
-        <div class="calendar-date">31</div>
-        <div class="calendar-date wedding-date">1</div>
-        <div class="calendar-date">2</div>
+    <div class="wedding-calendar" id="weddingCalendar"></div>
+    <div class="calendar-note">
+        <span class="calendar-heart">❤</span> 1 августа 2026 — Наша свадьба!
     </div>
-    <!-- Вторая неделя (25.05 - 31.05) -->
-    <!-- <div class="calendar-row">
-        <div class="calendar-date">25</div>
-        <div class="calendar-date">26</div>
-        <div class="calendar-date">27</div>
-        <div class="calendar-date">28</div>
-        <div class="calendar-date">29</div>
-        <div class="calendar-date">30</div>
-        <div class="calendar-date">31</div>
-    </div> -->
 </div>
 
 <!-- Стили для календаря (ПОЛНОСТЬЮ ПРОЗРАЧНЫЙ ФОН) -->
