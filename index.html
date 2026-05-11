@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Азизжон & Лазизахон - Свадьба</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Рукописные шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Marck+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=MedievalSharp&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Hero секция -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="subtitle animate-fade-in-up">Wedding day</h1>
+            <h2 class="title animate-fade-in-up-delay">АЗИЗЖОН & ЛАЗИЗАХОН</h2>
+            
+            <div class="hero-ornament" aria-hidden="true">
+                <span class="hero-ornament-line"></span>
+                <span class="hero-ornament-star">✦</span>
+                <span class="hero-ornament-line"></span>
+            </div>
+        </div>
+        
+        <!-- <img src="111.jpg" alt="Андрей и Диана" class="hero-photo"> -->
+    </section>
+
+
+    <!-- <section class="lifetime-promise">
+        <div class="promise-container">
+            <div class="promise-icon" aria-hidden="true">
+                <span class="ring-left">⚭</span>
+                <span class="heart">♥</span>
+                <span class="ring-right">⚭</span>
+            </div>
+            <h2 class="promise-title">ОБЕЩАНИЕ НА ВСЮ ЖИЗНЬ</h2>
+            <p class="promise-lead">Два сердца, бьющиеся в унисон. Два кольца, замкнувших круг вечности.<br>
+            В этом простом жесте — вся глубина обещания, которое мы даем друг другу. Не золото делает кольцо ценным,<br>
+            а история, которую оно заключает в себе.</p>
+            
+            <blockquote class="promise-quote">
+                «Любовь измеряется не годами, а моментами,<br>
+                которые остаются с нами навсегда»
+            </blockquote>
+            
+            <p class="promise-text">
+                Наш союз — это не просто формальность. Это сознательный выбор каждый день просыпаться рядом,<br>
+                делить радости и преодолевать трудности вместе. Кольца на наших пальцах — лишь видимое свидетельство невидимой связи.
+            </p>
+        </div>
+    </section> -->
+
+    <!-- Секция с локацией (БОРДОВЫЙ ФОН) -->
+    <section class="location-section">
+        <div class="location-container">
+            <!-- Текст приглашения и дата -->
+            <div class="invitation-text">
+                <p class="invitation">Приглашаем Вас разделить с нами первый праздник нашей семьи – нашу свадьбу!</p>
+                <div class="date">1 АВГУСТА 2026</div>
+                
+                <!-- Простой недельный календарь -->
+                <!-- Вместо <img src="4.png" alt="Дата свадьбы 21 августа 2026" class="date-photo"> вставляем этот код -->
+
+<!-- Простой календарь с выделенной датой свадьбы (ПРОЗРАЧНЫЙ ФОН) -->
+<div class="simple-calendar">
+    <!-- Дни недели -->
+    <div class="calendar-row days-of-week">
+        <div class="calendar-day">ПН</div>
+        <div class="calendar-day">ВТ</div>
+        <div class="calendar-day">СР</div>
+        <div class="calendar-day">ЧТ</div>
+        <div class="calendar-day">ПТ</div>
+        <div class="calendar-day">СБ</div>
+        <div class="calendar-day">ВС</div>
+    </div>
+    <!-- Неделя свадьбы (17.08 - 23.08) -->
+    <div class="calendar-row">
+        <div class="calendar-date">27</div>
+        <div class="calendar-date">28</div>
+        <div class="calendar-date">29</div>
+        <div class="calendar-date">30</div>
+        <div class="calendar-date">31</div>
+        <div class="calendar-date wedding-date">1</div>
+        <div class="calendar-date">2</div>
+    </div>
+    <!-- Вторая неделя (25.05 - 31.05) -->
+    <!-- <div class="calendar-row">
+        <div class="calendar-date">25</div>
+        <div class="calendar-date">26</div>
+        <div class="calendar-date">27</div>
+        <div class="calendar-date">28</div>
+        <div class="calendar-date">29</div>
+        <div class="calendar-date">30</div>
+        <div class="calendar-date">31</div>
+    </div> -->
+</div>
+
+<!-- Стили для календаря (ПОЛНОСТЬЮ ПРОЗРАЧНЫЙ ФОН) -->
+<style>
+    /* Контейнер календаря — теперь без фона и границ */
+    .simple-calendar {
+        max-width: 600px;
+        margin-left: auto;  /* Выравнивание справа */
+        margin-bottom: 40px;
+        /* Убираем весь фон и границы */
+        background-color: transparent !important;
+        border: none !important;
+        padding: 0;  /* Убираем внутренние отступы */
+    }
+
+    /* Строка календаря */
+    .calendar-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px; /* Немного уменьшил отступ */
+    }
+    .calendar-row:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Ячейка дня недели — прозрачная */
+    .days-of-week .calendar-day {
+        font-weight: 400;
+        color: #f0e9df; /* Светлый текст */
+        opacity: 0.9;
+    }
+    .calendar-day {
+        flex: 1;
+        text-align: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 300;
+        font-size: 1.2rem;
+        color: #f0e9df; /* Светлый текст */
+        padding: 5px; /* Уменьшил padding */
+        /* Убираем фон */
+        background-color: transparent !important;
+    }
+
+    /* Ячейка с числом — полностью прозрачная, только текст */
+    .calendar-date {
+        flex: 1;
+        text-align: center;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: #f0e9df; /* Светлый текст */
+        padding: 10px 5px;
+        margin: 0 5px;
+        /* Полностью прозрачный фон */
+        background-color: transparent !important;
+        border-radius: 0; /* Убираем скругление */
+        transition: all 0.3s ease;
+    }
+
+    /* Выделенная дата свадьбы — только обводка/фон для самой даты */
+    .calendar-date.wedding-date {
+        background-color: #f0e9df !important; /* Светлый фон только для этой ячейки */
+        color: #5c151b !important; /* Бордовый текст */
+        border-radius: 50%; /* Делаем круглую форму */
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto; /* Центрируем круг */
+        font-size: 1.8rem;
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        /* Убираем лишние отступы, чтобы круг был ровным */
+        padding: 0;
+        line-height: 1;
+    }
+    
+    /* Сердечко под круглой датой */
+    /* .calendar-date.wedding-date::after {
+        content: '♥';
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        color: #f0e9df;
+        white-space: nowrap;
+    } */
+
+    /* Адаптивность для мобильных */
+    @media (max-width: 768px) {
+        .simple-calendar {
+            margin: 0 auto 30px auto; /* Центрируем на мобильных */
+        }
+        
+        .calendar-day {
+            font-size: 1rem;
+            padding: 5px 2px;
+        }
+        
+        .calendar-date {
+            font-size: 1.5rem;
+            padding: 8px 2px;
+            margin: 0 2px;
+        }
+        
+        /* Круглая дата на мобильных */
+        .calendar-date.wedding-date {
+            width: 45px;
+            height: 45px;
+            font-size: 1.5rem;
+        }
+        
+        /* .calendar-date.wedding-date::after {
+            font-size: 1.2rem;
+            bottom: -22px;
+        } */
+    }
+
+    @media (max-width: 480px) {
+        .calendar-day {
+            font-size: 0.9rem;
+            padding: 5px 1px;
+        }
+        
+        .calendar-date {
+            font-size: 1.3rem;
+            padding: 6px 1px;
+            margin: 0 1px;
+        }
+        
+        .calendar-date.wedding-date {
+            width: 40px;
+            height: 40px;
+            font-size: 1.3rem;
+        }
+    }
+    
+    @media (max-width: 360px) {
+        .calendar-day {
+            font-size: 0.8rem;
+        }
+        
+        .calendar-date {
+            font-size: 1.1rem;
+        }
+        
+        .calendar-date.wedding-date {
+            width: 35px;
+            height: 35px;
+            font-size: 1.1rem;
+        }
+    }
+</style>
+            </div>
+            
+            <!-- Блок LOCATION с СВЕТЛЫМ фоном - ПЕРЕМЕЩАЕМ ЗДЕСЬ -->
+            <div class="location-info-light">
+                <div class="location-info-content">
+                    <h3 class="location-title">LOCATION</h3>
+                    
+                    <!-- Фото места проведения ВНУТРИ блока location-info-light ПОСЛЕ заголовка -->
+                    <div class="location-photo-container">
+                        <img src="loc.png" alt="Место проведения свадьбы" class="location-photo">
+                    </div>
+                    
+                    <!-- Адрес и кнопка ПОСЛЕ фото -->
+                    <p class="location-address"> г. Саратов, Крайняя ул., 129/4, Банкетный зал «Счастье»</p>
+                    <a href="https://yandex.ru/maps/-/CPcOr2L0" class="map-button" target="_blank">Посмотреть на карте</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "WEDDING PROGRAM" (БОРДОВЫЙ ФОН) -->
+    <section class="section program-section" id="program">
+        <div class="container">
+            <div class="section-header">
+            <h2 class="section-title">Программа дня</h2>
+            </div>
+            
+            <div class="program">
+            <div class="program-item">
+                <div class="program-image">
+                <img src="11.png" alt="Сбор гостей" class="program-icon">
+                </div>
+                <div class="program-content">
+                <h3 class="program-title">СБОР ГОСТЕЙ</h3>
+                <div class="program-time">17:00</div>
+                </div>
+            </div>
+            
+            <!-- <div class="program-item">
+                <div class="program-image">
+                <img src="12.png" alt="Церемония" class="program-icon">
+                </div>
+                <div class="program-content">
+                <h3 class="program-title">ЦЕРЕМОНИЯ</h3>
+                <div class="program-time">15:30</div>
+                </div>
+            </div> -->
+            
+            <div class="program-item">
+                <div class="program-image">
+                <img src="13.png" alt="Ужин" class="program-icon">
+                </div>
+                <div class="program-content">
+                <h3 class="program-title">ПРАЗДНИЧНЫЙ БАНКЕТ</h3>
+                <div class="program-time">17:30</div>
+                </div>
+            </div>
+            
+            <!-- <div class="program-item">
+                <div class="program-image">
+                <img src="14.png" alt="Торт" class="program-icon">
+                </div>
+                <div class="program-content">
+                <h3 class="program-title">СВАДЕБНЫЙ ТОРТ</h3>
+                <div class="program-time">21:00</div>
+                </div>
+            </div> -->
+        
+            <!-- <div class="program-item">
+                <div class="program-image">
+                <img src="15.png" alt="Танцы" class="program-icon">
+                </div>
+                <div class="program-content">
+                <h3 class="program-title">ТАНЦЫ</h3>
+                <div class="program-time">22:00 - 23:00</div>
+                </div>
+            </div>  -->
+            
+            <!-- <div class="program-item">
+                <div class="program-image">
+                <img src="15.png" alt="Окончание" class="program-icon">
+                </div>
+                <div class="program-content">
+                <h3 class="program-title">ОКОНЧАНИЕ БАНКЕТА</h3>
+                <div class="program-time">22:00</div>
+                </div>
+            </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "WISHES" (БОРДОВЫЙ ФОН) -->
+    <section class="wishes-section">
+        <div class="wishes-container">
+            <h2 class="wishes-title">WISHES</h2>
+            
+            <div class="wishes-content">
+                <p class="wishes-text">
+                    Ваше присутствие на нашей свадьбе — уже самый ценный подарок для нас! <br><br>
+                    Если вы всё же хотите сделать нам подарок, мы будем искренне благодарны за ваш вклад в бюджет нашей молодой
+                    семьи — он поможет нам осуществить самые сокровенные мечты. <br> <br>
+                    А вместо цветов мы будем рады вашим тёплым объятиям и искренним улыбкам в этот особенный день!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "DRESS CODE" (СВЕТЛЫЙ ФОН) -->
+<!-- Секция "DRESS CODE" (СВЕТЛЫЙ ФОН) -->
+    <section class="dresscode-section">
+        <div class="dresscode-container">
+            <h2 class="dresscode-title">
+                <span>DRESS</span>
+                <span>CODE</span>
+            </h2>
+            
+            <div class="dresscode-content">
+                <p class="dresscode-text">Самое главное — это вы и ваше хорошее настроение. Оставляем за вами полную свободу в выборе наряда.</p>
+                
+                <!-- КРУЖОЧКИ С ЦВЕТАМИ -->
+                <!-- <div class="color-palette">
+                    <div class="color-circle" style="background-color: #fcf2e8;"></div>
+                    <div class="color-circle" style="background-color: #586353;"></div>              
+                    <div class="color-circle" style="background-color: #062102;"></div>
+                    <div class="color-circle" style="background-color: #6f4143;"></div>
+                    <div class="color-circle" style="background-color: #380001;"></div>
+                    <div class="color-circle" style="background-color: #270e09;"></div>
+                </div> -->
+                <!-- КОНЕЦ КРУЖОЧКОВ -->
+            </div>
+
+            <!-- НОВОЕ ИЗОБРАЖЕНИЕ DRESS.PNG -->
+            <!-- <div style="text-align: center; margin-top: 40px;">
+                <img src="dress.png" alt="Дресс-код" style="max-width: 100%; height: auto; width: 100%; max-width: 600px; border-radius: 0; box-shadow: none;">
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Таймер отсчета до свадьбы -->
+    <section class="countdown-section">
+        <div class="countdown-container">
+            <h2 class="countdown-title">ДО СВАДЬБЫ ОСТАЛОСЬ</h2>
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">ДНЕЙ</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">ЧАСОВ</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">МИНУТ</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">СЕКУНД</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "RSVP" (СВЕТЛЫЙ ФОН) -->
+    <section class="rsvp-section">
+        <div class="rsvp-container">
+            <h2 class="rsvp-title">АНКЕТА</h2>
+            
+            <div class="rsvp-content">
+                <p class="rsvp-text">
+                    Просим подтвердить свое присутствие на торжестве до 15 июля
+                </p>
+                
+                <form class="rsvp-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Фамилия Имя Отчество" required>
+                    </div>
+                    
+                    <!-- <div class="form-group">
+                        <input type="tel" class="form-input" placeholder="Номер телефона" required>
+                    </div> -->
+                    
+                    <!-- НОВОЕ ПОЛЕ: Предпочтение по алкоголю -->
+                    <!-- НОВОЕ ПОЛЕ: Предпочтения по алкоголю (МНОЖЕСТВЕННЫЙ ВЫБОР) -->
+                    <!-- <div class="form-group">
+                        <label style="display: block; margin-bottom: 12px; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #5c151b;">Предпочтения по алкоголю (можно выбрать несколько)</label>
+                        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="alcohol" value="white_wine" style="width: 18px; height: 18px; cursor: pointer;"> &#1041;&#1077;&#1083;&#1086;&#1077; &#1074;&#1080;&#1085;&#1086;
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="alcohol" value="red_wine" style="width: 18px; height: 18px; cursor: pointer;"> &#1050;&#1088;&#1072;&#1089;&#1085;&#1086;&#1077; &#1074;&#1080;&#1085;&#1086;
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="alcohol" value="champagne" style="width: 18px; height: 18px; cursor: pointer;"> &#1064;&#1072;&#1084;&#1087;&#1072;&#1085;&#1089;&#1082;&#1086;&#1077;
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="alcohol" value="cognac" style="width: 18px; height: 18px; cursor: pointer;"> &#1050;&#1086;&#1085;&#1100;&#1103;&#1082;
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="alcohol" value="vodka" style="width: 18px; height: 18px; cursor: pointer;"> &#1042;&#1086;&#1076;&#1082;&#1072;
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="alcohol" value="whiskey" style="width: 18px; height: 18px; cursor: pointer;"> &#1042;&#1080;&#1089;&#1082;&#1080;
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" name="alcohol" value="non_alcoholic" style="width: 18px; height: 18px; cursor: pointer;"> &#1041;&#1077;&#1079;&#1072;&#1083;&#1082;&#1086;&#1075;&#1086;&#1083;&#1100;&#1085;&#1099;&#1077; &#1085;&#1072;&#1087;&#1080;&#1090;&#1082;&#1080;
+                            </label>
+                        </div>
+                    </div> -->
+
+                    <!-- НОВОЕ ПОЛЕ: Аллергические реакции -->
+                    <!-- <div class="form-group">
+                        <input type="text" class="form-input" id="allergy" placeholder="Аллергические реакции (если есть)">
+                    </div> -->
+                    
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="yes" required>
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">С радостью приду!</span>
+                            </label>
+                            
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="no">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">К сожалению, не смогу</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 12px; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #5c151b;">Количество гостей (включая вас)</label>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 20px;">
+                            <button type="button" id="guestMinus" class="guest-counter-btn" style="width: 50px; height: 50px; border-radius: 50%; background-color: transparent; color: #5c151b; border: 1px solid #8B7355; font-size: 24px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">−</button>
+                            <span id="guestCount" style="font-family: 'Cinzel', serif; font-size: 2rem; min-width: 60px; text-align: center; color: #5c151b;">1</span>
+                            <button type="button" id="guestPlus" class="guest-counter-btn" style="width: 50px; height: 50px; border-radius: 50%; background-color: transparent; color: #5c151b; border: 1px solid #8B7355; font-size: 24px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;">+</button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Подтвердить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+<!-- Футер -->
+<footer class="footer-section">
+    <div class="footer-container">
+        <!-- Фото 2.jpg -->
+        <!-- <div class="footer-photo-container">
+            <img src="2.jpg" alt="Андрей и Диана" class="footer-photo">
+        </div> -->
+        
+        <p class="footer-text">
+            С нетерпеньем ждем Вас!<br>
+            С любовью, Азизжон и Лазизахон
+            <!-- Невеста
+            <span class="footer-contact">+7 (922) 313-85-94</span><br>
+            Жених
+            <span class="footer-contact">+7 (912) 880-88-42</span><br> -->
+        </p>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
